@@ -1,0 +1,15 @@
+spring:
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: always #communtare in never dopo il setup.
+    properties:
+      org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate #Fondamentale se il db è postgresql
+      org.quartz.scheduler.overwriteExistingJobs : true # evita che al riavvio i job scaduti siano immediatamente eseguiti.
+    dataSource:
+        driver-class-name: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/quartz
+        username: admin
+        password: password
+  application:
+    name: quartz-scheduler
